@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5394F02321864DF4006E754C /* LaunchScreen.storyboard */; };
+		7480E75E22DFAF00002F4FD7 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480E75D22DFAF00002F4FD7 /* ChatRoom.swift */; };
 		AFAE5331228B45AA002F331D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE5325228B45A9002F331D /* Message.swift */; };
 		AFAE5332228B45AA002F331D /* JoinChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE5326228B45A9002F331D /* JoinChatViewController.swift */; };
 		AFAE5333228B45AA002F331D /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE5327228B45A9002F331D /* ChatRoomViewController.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7480E75D22DFAF00002F4FD7 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		AFAE5325228B45A9002F331D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AFAE5326228B45A9002F331D /* JoinChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChatViewController.swift; sourceTree = "<group>"; };
 		AFAE5327228B45A9002F331D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				AFAE5327228B45A9002F331D /* ChatRoomViewController.swift */,
+				7480E75D22DFAF00002F4FD7 /* ChatRoom.swift */,
 				AFAE5329228B45A9002F331D /* ChatRoomViewController+Table.swift */,
 				AFAE5328228B45A9002F331D /* Inconsolata-Bold.ttf */,
 				AFAE532B228B45A9002F331D /* Inconsolata-Regular.ttf */,
@@ -176,6 +179,7 @@
 				AFAE5339228B45AA002F331D /* MessageTableViewCell.swift in Sources */,
 				AFAE5333228B45AA002F331D /* ChatRoomViewController.swift in Sources */,
 				AFAE5335228B45AA002F331D /* ChatRoomViewController+Table.swift in Sources */,
+				7480E75E22DFAF00002F4FD7 /* ChatRoom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

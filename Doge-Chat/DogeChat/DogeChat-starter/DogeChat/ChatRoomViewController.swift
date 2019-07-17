@@ -29,9 +29,16 @@
 
 import UIKit
 
+// this view controller is ready to receive strings as messages from
+// input bar.
+// Can also display messages via a table view with custom cells configured
+// with "message" objects
 class ChatRoomViewController: UIViewController {
+  //declare properties
+  
   let tableView = UITableView()
   let messageInputBar = MessageInputView()
+  let chatRoom = ChatRoom() // a chatRoom property
   
   var messages: [Message] = []
   
@@ -40,17 +47,19 @@ class ChatRoomViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-  }
+    chatRoom.setupNetorkCommunication()
+    
+  } // end viewWillAppear()
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
 
-  }
+  } // end viewWillDisappear()
 } // end ChatRoomViewController class...
 
 //MARK - Message Input Bar
 extension ChatRoomViewController: MessageInputDelegate {
   func sendWasTapped(message: String) {
     
-  }
-}
+  } // end sendWasTapped()
+} // end ChatRoomVewController extension
