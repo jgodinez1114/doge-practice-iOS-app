@@ -48,6 +48,7 @@ class ChatRoomViewController: UIViewController {
     super.viewWillAppear(animated)
     
     chatRoom.setupNetorkCommunication()
+    chatRoom.joinChat(username: username)
     
   } // end viewWillAppear()
   
