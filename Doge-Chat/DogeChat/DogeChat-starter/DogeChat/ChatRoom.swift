@@ -121,6 +121,13 @@ class ChatRoom: NSObject // inherit from root class
         outputStream.write(pointer, maxLength: data.count)
     }
   } // end send()
+  
+  // end the session
+  func stopChatSession()
+  {
+    inputStream.close()
+    outputStream.close()
+  } // end stopChatSession()
 } // end ChatRoom class
 
 // need to use inputStream to catch messages (showing up as a cell in ChatRoomViewController's table of messages)
@@ -137,6 +144,7 @@ extension ChatRoom: StreamDelegate{
       print("new message received")
       readAvailableBytes(stream: aStream as! InputStream)
     case .endEncountered:
+      stopChatSession()
       print("new message received")
     // if error occurred on the stream
     case .errorOccurred:

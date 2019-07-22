@@ -56,7 +56,7 @@ class ChatRoomViewController: UIViewController {
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-
+    chatRoom.stopChatSession()  // close stream and remove from run loop
   } // end viewWillDisappear()
 } // end ChatRoomViewController class...
 
