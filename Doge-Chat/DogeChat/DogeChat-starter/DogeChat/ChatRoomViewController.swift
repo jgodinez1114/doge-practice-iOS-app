@@ -65,7 +65,7 @@ extension ChatRoomViewController: MessageInputDelegate
 {
   func sendWasTapped(message: String)
   {
-    
+    chatRoom.send(message: message)
   } // end sendWasTapped()
   
 } // end ChatRoomVewController extension

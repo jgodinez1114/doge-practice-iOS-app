@@ -104,6 +104,23 @@ class ChatRoom: NSObject // inherit from root class
       outputStream.write(pointer, maxLength: data.count)
     }
   } // end joinChat()
+  
+  // allow user to send/ receive actual text when Send button is input
+  func send(message: String)
+  {
+    // prepend msg to sent text
+    let data = "msg:\(message)".data(using: .utf8)!
+    
+    _ = data.withUnsafeBytes
+      {
+        guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else
+        {
+          print("Error joining chat")
+          return
+        }
+        outputStream.write(pointer, maxLength: data.count)
+    }
+  } // end send()
 } // end ChatRoom class
 
 // need to use inputStream to catch messages (showing up as a cell in ChatRoomViewController's table of messages)
