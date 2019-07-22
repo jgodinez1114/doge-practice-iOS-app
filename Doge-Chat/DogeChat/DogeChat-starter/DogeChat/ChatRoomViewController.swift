@@ -47,6 +47,8 @@ class ChatRoomViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    // view controller will be chatRoom's delegate
+    chatRoom.delegate = self    
     chatRoom.setupNetorkCommunication()
     chatRoom.joinChat(username: username)
     
@@ -59,8 +61,21 @@ class ChatRoomViewController: UIViewController {
 } // end ChatRoomViewController class...
 
 //MARK - Message Input Bar
-extension ChatRoomViewController: MessageInputDelegate {
-  func sendWasTapped(message: String) {
+extension ChatRoomViewController: MessageInputDelegate
+{
+  func sendWasTapped(message: String)
+  {
     
   } // end sendWasTapped()
+  
 } // end ChatRoomVewController extension
+
+// piece which conforms to ChatRoomDelegate protocol
+extension ChatRoomViewController: ChatRoomDelegate
+{
+  func received(message: Message)
+  {
+    // take message and add the appropriate cell to the table
+    insertNewMessageCell(message)
+  }
+}

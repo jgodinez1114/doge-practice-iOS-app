@@ -28,8 +28,16 @@
 
 import UIKit
 
+// define a protocol to share message objects
+protocol ChatRoomDelegate: class {
+  func received(message: Message)
+}
+
 class ChatRoom: NSObject // inherit from root class
 {
+  // weak optional property to hold a reference to whomever decides to b ChatRoom delegate
+  weak var delegate: ChatRoomDelegate?
+  
   //1
   var inputStream: InputStream! // a stream for read-only
   var outputStream: OutputStream! // a stream for write-only
@@ -96,7 +104,7 @@ class ChatRoom: NSObject // inherit from root class
       outputStream.write(pointer, maxLength: data.count)
     }
   } // end joinChat()
-}
+} // end ChatRoom class
 
 // need to use inputStream to catch messages (showing up as a cell in ChatRoomViewController's table of messages)
 // turn them into Message objects
@@ -143,7 +151,33 @@ extension ChatRoom: StreamDelegate{
       }
       
       // construct the message object
-      
+      if let message = processedMessageString(buffer: buffer, length: numberOfBytesRead)
+      {
+        // NOtify interestd parties
+        delegate?.received(message: message)
+      }
     } // end while stream has bytes available
   } // end readAvailableBytes()
+  
+  // helper function to convert buffer into Message object
+  private func processedMessageString(buffer: UnsafeMutablePointer<UInt8>, length: Int)->Message?
+  {
+    //1. initialize a string using buffer & length passed in
+    //   tell String to free up the buffer of all bytes when done
+    //   then split the incoming messsage on the ":" char
+    //   this will treat the sender's name & message as separate strings
+    guard
+      let stringArray = String(
+        bytesNoCopy: buffer, length: length, encoding: .utf8, freeWhenDone: true
+        )?.components(separatedBy: ":"),
+    let name = stringArray.first,
+    let message = stringArray.last
+      else {
+      return nil
+    }
+    //2.
+    let messageSender: MessageSender = (name == self.username) ? .ourself : .someoneElse
+    
+    return Message(message: message, messageSender: messageSender, username: name)
+  }
 } // end ChatRoom extension
