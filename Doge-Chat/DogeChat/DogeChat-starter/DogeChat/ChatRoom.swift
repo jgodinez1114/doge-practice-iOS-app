@@ -29,7 +29,8 @@
 import UIKit
 
 // define a protocol to share message objects
-protocol ChatRoomDelegate: class {
+protocol ChatRoomDelegate: class
+{
   func received(message: Message)
 }
 
@@ -93,16 +94,18 @@ class ChatRoom: NSObject // inherit from root class
     self.username = username
     
     // provide a convenient way to work w/ an unsafe pointer version of data within a safe closure
-    _ = data.withUnsafeBytes {
-      guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else{
-        print("Error joining chat")
-        return
-      }
+    _ = data.withUnsafeBytes
+      {
+          guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else
+          {
+            print("Error joining chat")
+            return
+          }
       
       // write message to the output stream. write(_,maxLength:) takes a reference
       // to an unsafe pointer to bytes as first arg
       outputStream.write(pointer, maxLength: data.count)
-    }
+     }
   } // end joinChat()
   
   // allow user to send/ receive actual text when Send button is input
@@ -119,7 +122,7 @@ class ChatRoom: NSObject // inherit from root class
           return
         }
         outputStream.write(pointer, maxLength: data.count)
-    }
+      }
   } // end send()
   
   // end the session
@@ -135,10 +138,12 @@ class ChatRoom: NSObject // inherit from root class
 // pass them off to the table
 
 // StreamDelegate is an interface used by delegates of a stream for event handling
-extension ChatRoom: StreamDelegate{
+extension ChatRoom: StreamDelegate
+{
   func stream(_ aStream: Stream, handle eventCode: Stream.Event)
   {
-    switch eventCode {
+    switch eventCode
+    {
     // use instance property of Bool which indicates wheter the receiver has bytes available to read
     case .hasBytesAvailable:  // indicates there is an incoming message to read
       print("new message received")
@@ -204,5 +209,5 @@ extension ChatRoom: StreamDelegate{
     let messageSender: MessageSender = (name == self.username) ? .ourself : .someoneElse
     
     return Message(message: message, messageSender: messageSender, username: name)
-  }
+  } // end processedMessageString()
 } // end ChatRoom extension

@@ -40,21 +40,24 @@ extension ChatRoomViewController: UITableViewDataSource, UITableViewDelegate {
     return cell
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return messages.count
-  }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+  {
+    return messages.count // get the number of elements in the array
+  } // end tableView()
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+  {
     let height = MessageTableViewCell.height(for: messages[indexPath.row])
     return height
-  }
+  } // end tableView()
   
-  func insertNewMessageCell(_ message: Message) {
+  func insertNewMessageCell(_ message: Message)
+  {
     messages.append(message)
     let indexPath = IndexPath(row: messages.count - 1, section: 0)
     tableView.beginUpdates()
     tableView.insertRows(at: [indexPath], with: .bottom)
     tableView.endUpdates()
     tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-  }
-}
+  } // end insertNewMessageCell()
+} // end ChatRoomViewController ext

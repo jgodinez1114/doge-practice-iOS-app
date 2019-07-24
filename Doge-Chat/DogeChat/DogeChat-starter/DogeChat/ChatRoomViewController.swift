@@ -33,9 +33,9 @@ import UIKit
 // input bar.
 // Can also display messages via a table view with custom cells configured
 // with "message" objects
-class ChatRoomViewController: UIViewController {
+class ChatRoomViewController: UIViewController
+{
   //declare properties
-  
   let tableView = UITableView()
   let messageInputBar = MessageInputView()
   let chatRoom = ChatRoom() // a chatRoom property
@@ -44,7 +44,8 @@ class ChatRoomViewController: UIViewController {
   
   var username = ""
   
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewWillAppear(_ animated: Bool)
+  {
     super.viewWillAppear(animated)
     
     // view controller will be chatRoom's delegate
@@ -54,7 +55,8 @@ class ChatRoomViewController: UIViewController {
     
   } // end viewWillAppear()
   
-  override func viewWillDisappear(_ animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool)
+  {
     super.viewWillDisappear(animated)
     chatRoom.stopChatSession()  // close stream and remove from run loop
   } // end viewWillDisappear()
