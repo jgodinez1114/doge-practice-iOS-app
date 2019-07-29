@@ -53,7 +53,7 @@ class MessageTableViewCell: UITableViewCell {
     messageLabel.numberOfLines = 0
     
     nameLabel.textColor = .lightGray
-    nameLabel.font = UIFont(name: "Helvetica", size: 10)
+    nameLabel.font = UIFont(name: "Zapfino", size: 10)
 
     clipsToBounds = true
     
@@ -70,7 +70,7 @@ class MessageTableViewCell: UITableViewCell {
   }
   
   private class func height(forText text: String, fontSize: CGFloat, maxSize: CGSize) -> CGFloat {
-    let font = UIFont(name: "Helvetica", size: fontSize)!
+    let font = UIFont(name: "Zapfino", size: fontSize)!
     let attrString = NSAttributedString(string: text, attributes:[NSAttributedString.Key.font: font,
                                                                   NSAttributedString.Key.foregroundColor: UIColor.white])
     let textHeight = attrString.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, context: nil).size.height

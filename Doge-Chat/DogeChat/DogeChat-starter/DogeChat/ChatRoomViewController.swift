@@ -50,7 +50,7 @@ class ChatRoomViewController: UIViewController
     
     // view controller will be chatRoom's delegate
     chatRoom.delegate = self    
-    chatRoom.setupNetorkCommunication()
+    chatRoom.setupNetworkCommunication()
     chatRoom.joinChat(username: username)
     
   } // end viewWillAppear()

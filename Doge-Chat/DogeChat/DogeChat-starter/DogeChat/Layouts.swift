@@ -76,6 +76,7 @@ extension ChatRoomViewController {
   }
 }
 
+
 extension JoinChatViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -107,7 +108,7 @@ extension JoinChatViewController {
     nameTextField.delegate = self
     
     let backItem = UIBarButtonItem()
-    backItem.title = "Run!"
+    backItem.title = "Retreat!"
     navigationItem.backBarButtonItem = backItem
   }
   
@@ -121,7 +122,7 @@ extension JoinChatViewController {
     nameTextField.bounds = CGRect(x: 0, y: 0, width: view.bounds.size.width - 40, height: 44)
     nameTextField.center = CGPoint(x: view.bounds.size.width / 2.0, y: logoImageView.center.y + logoImageView.bounds.size.height / 2.0 + 20 + 22)
   }
-}
+} // end JoinChatViewController ext
 
 extension MessageTableViewCell {
   override func layoutSubviews() {
@@ -130,7 +131,7 @@ extension MessageTableViewCell {
     if isJoinMessage() {
       layoutForJoinMessage()
     } else {
-      messageLabel.font = UIFont(name: "Helvetica", size: 17)
+      messageLabel.font = UIFont(name: "Zapfino", size: 17)
       messageLabel.textColor = .white
       
       let size = messageLabel.sizeThatFits(CGSize(width: 2 * (bounds.size.width / 3), height: .greatestFiniteMagnitude))
@@ -164,13 +165,15 @@ extension MessageTableViewCell {
     messageLabel.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2.0)
   }
   
-  func isJoinMessage() -> Bool {
-    if let words = messageLabel.text?.components(separatedBy: " ") {
-      if words.count >= 2 && words[words.count - 2] == "has" && words[words.count - 1] == "joined" {
+  func isJoinMessage() -> Bool
+  {
+    if let words = messageLabel.text?.components(separatedBy: " ")
+    {
+      if words.count >= 2 && words[words.count - 2] == "has" && words[words.count - 1] == "joined"
+      {
         return true
       }
     }
-    
     return false
-  }
-}
+  } // end isJoinMessage()
+} // end MessageTableViewCell ext

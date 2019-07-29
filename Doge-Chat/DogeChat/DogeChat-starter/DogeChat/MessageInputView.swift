@@ -29,17 +29,20 @@
 
 import UIKit
 
-protocol MessageInputDelegate {
+protocol MessageInputDelegate
+{
   func sendWasTapped(message: String)
 }
 
-class MessageInputView: UIView {
+class MessageInputView: UIView
+{
   var delegate: MessageInputDelegate?
   
   let textView = UITextView()
   let sendButton = UIButton()
   
-  override init(frame: CGRect) {
+  override init(frame: CGRect)
+  {
     super.init(frame: frame)
     
     backgroundColor = UIColor(red: 247 / 255, green: 247 / 255, blue: 247 / 255, alpha: 1.0)
@@ -58,18 +61,22 @@ class MessageInputView: UIView {
     addSubview(sendButton)
   }
   
-  @objc func sendTapped() {
-    if let delegate = delegate, let message = textView.text {
+  @objc func sendTapped()
+  {
+    if let delegate = delegate, let message = textView.text
+    {
       delegate.sendWasTapped(message:  message)
       textView.text = ""
     }
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder)
+  {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func layoutSubviews() {
+  override func layoutSubviews()
+  {
     super.layoutSubviews()
     
     let size = bounds.size
@@ -81,8 +88,10 @@ class MessageInputView: UIView {
   }
 }
 
-extension MessageInputView: UITextViewDelegate {
-  func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+extension MessageInputView: UITextViewDelegate
+{
+  func textViewShouldEndEditing(_ textView: UITextView) -> Bool
+  {
     return true
   }
-}
+} // end MessageInputView ext

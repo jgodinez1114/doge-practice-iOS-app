@@ -49,7 +49,7 @@ class ChatRoom: NSObject // inherit from root class
   //3
   let maxReadLength = 4096  // puts a cap on data you can send in any single message
   
-  func setupNetorkCommunication()
+  func setupNetworkCommunication()
   {
     //1. set up 2 intitial socket streams w/o mem management
     var readStream: Unmanaged<CFReadStream>? // propogate to an unmanaged object reference
@@ -118,7 +118,7 @@ class ChatRoom: NSObject // inherit from root class
       {
         guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else
         {
-          print("Error joining chat")
+          print("Error sending message")
           return
         }
         outputStream.write(pointer, maxLength: data.count)
