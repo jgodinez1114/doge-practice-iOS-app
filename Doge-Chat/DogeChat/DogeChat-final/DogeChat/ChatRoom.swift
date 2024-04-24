@@ -92,7 +92,7 @@ class ChatRoom: NSObject {
     
     _ = data.withUnsafeBytes {
       guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-        print("Error joining chat")
+        print("Error joining chat. Contact your system administrator")
         return
       }
       outputStream.write(pointer, maxLength: data.count)
